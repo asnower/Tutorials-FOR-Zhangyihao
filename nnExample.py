@@ -1,8 +1,9 @@
 import torch
-
+import random
 N, D_in, H, D_out = 10, 5, 100, 1
 
 x = torch.randn(N, D_in)
+y = torch.randn(N, D_out)
 for i in range(10):
     y[i] = random.randint(0,1)
 model = torch.nn.Sequential(
@@ -23,6 +24,7 @@ for t in range(500):
         with torch.no_grad():
             for param in model.parameters():
                 param -= learning_rate * param.grad
+                
  #example
 W=torch.tensor([0.7572, 1.6134, 0.3783, 0.0668, 0.8177])
 print(model(W))
